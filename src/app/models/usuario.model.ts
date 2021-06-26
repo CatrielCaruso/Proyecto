@@ -12,7 +12,7 @@ export class Usuario {
       public google?: boolean,
       public img?:string,
       public role?: string,
-      public uid?: string
+      public uid?: any,
   ) {}
 
   // imprimirUsuario(){
@@ -22,23 +22,28 @@ export class Usuario {
   // }
 
   get imagenUrl(){
-    
-    if(this.img?.includes('https')){
+
+    if(!this.img){
+
+      return `${base_url}/upload/usuarios/no-image`;
+    }else if(this.img?.includes('https')){
 
       return this.img;
 
-    }
+    }else if(this.img){
 
-    if(this.img){
+      return `${base_url}/upload/usuarios/${this.img}`;
+ 
+     }else{
+       
+       return `${base_url}/upload/usuarios/no-image`;
+ 
+ 
+     }
+    
+    
 
-     return `${base_url}/upload/usuarios/${this.img}`;
-
-    }else{
-      
-      return `${base_url}/upload/usuarios/no-image`;
-
-
-    }
+    
     
 
 
