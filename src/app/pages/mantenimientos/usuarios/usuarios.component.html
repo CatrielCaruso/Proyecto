@@ -61,15 +61,14 @@
                 <td>{{ usuario.email }}</td>
                 <td>{{ usuario.nombre }}</td>
                 <td>
-                 <select  class="form-control" 
-                 [(ngModel)]="usuario.role"
-                 (change)="cambiarRole(usuario)"
-                 >
-                   <option value="ADMIN_ROLE">Admin</option>
-                   <option value="USER_ROLE">User</option>
-
-                 </select>
-
+                  <select
+                    class="form-control"
+                    [(ngModel)]="usuario.role"
+                    (change)="cambiarRole(usuario)"
+                  >
+                    <option value="ADMIN_ROLE">Admin</option>
+                    <option value="USER_ROLE">User</option>
+                  </select>
                 </td>
                 <td>
                   <span *ngIf="usuario.google" class="label label-danger"
@@ -80,14 +79,17 @@
                   >
                 </td>
 
-                <td class="text-nowrap text-center">                                  
-                  <a data-toggle="tooltip" 
-                      data-original-title="Borrar"
-                      class="cursor"
-                      (click)="eliminarUsuario(usuario)">
-                      <i class="fa fa-close text-danger"></i> 
+                <td class="text-nowrap text-center">
+                  <a
+                    
+                    data-toggle="tooltip"
+                    data-original-title="Borrar"
+                    class="cursor"
+                    (click)="eliminarUsuario(usuario)"
+                  >
+                    <i class="fa fa-trash text-danger"></i>
                   </a>
-              </td>
+                </td>
               </tr>
             </tbody>
           </table>
