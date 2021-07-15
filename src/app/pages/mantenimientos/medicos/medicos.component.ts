@@ -4,6 +4,7 @@ import { Medico } from 'src/app/models/medico.model';
 import { BusquedasService } from 'src/app/services/busquedas.service';
 import { MedicoService } from 'src/app/services/medico.service';
 import { ModalImagenService } from 'src/app/services/modal-imagen.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,22 +12,29 @@ import Swal from 'sweetalert2';
   templateUrl: './medicos.component.html',
   styles: [],
 })
-export class MedicosComponent implements OnInit,OnDestroy {
+export class MedicosComponent implements OnInit, OnDestroy {
   public cargando: boolean = true;
   public medicos: Medico[] = [];
   private imgSubs: any;
+  public medicosUsu: any = [];
+  public role: any = true;
 
   constructor(
     private medicoService: MedicoService,
     private modalImagenService: ModalImagenService,
-    private busquedasService: BusquedasService
+    private busquedasService: BusquedasService,
+    private usuarioServices: UsuarioService
   ) {}
   ngOnDestroy(): void {
     this.imgSubs.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.cargarMedicos();
+    if (this.usuarioServices.role === 'ADMIN_ROLE') {
+      this.cargarMedicos();
+    } else {
+      this.cargarMedicosUsu();
+    }
 
     this.imgSubs = this.modalImagenService.nuevaImagen
       .pipe(delay(200))
@@ -40,6 +48,41 @@ export class MedicosComponent implements OnInit,OnDestroy {
       this.medicos = medicos;
 
       console.log(medicos);
+    });
+  }
+
+  // get role():any{
+
+  //   return this.usuarioServices.usuario?.role;
+
+  // }
+
+  cargarMedicosUsu() {
+    this.cargando = true;
+    this.medicoService.cargarMedicos().subscribe((medicos) => {
+      this.cargando = false;
+
+      for (let index = 0; index < medicos.length; index++) {
+        const _id = medicos[index].usuario._id;
+        console.log(_id);
+        if (_id === this.usuarioServices.uid) {
+          // this.medicos = medicos[index];
+          this.medicosUsu.push(medicos[index]);
+          console.log(this.medicosUsu);
+        }
+      }
+
+      this.role = false;
+
+      console.log(this.medicosUsu);
+
+      // if(medicos.usuario._id===this.medicos = medicos;){
+
+      //   this.medicos = medicos;
+
+      // }
+
+      // console.log(medicos);
     });
   }
 
@@ -59,9 +102,7 @@ export class MedicosComponent implements OnInit,OnDestroy {
       });
   }
 
-
-  borrarMedico(medico:Medico){
-
+  borrarMedico(medico: Medico) {
     return Swal.fire({
       title: '¿Borrar medico?',
       text: `Esta a punto de borrar a ${medico.nombre}`,
@@ -82,6 +123,5 @@ export class MedicosComponent implements OnInit,OnDestroy {
         });
       }
     });
-
   }
 }

@@ -1,9 +1,11 @@
 import { Hospital } from './hospital.model';
 
-interface _MedicoUser {
-  _id: string;
-  nombre: string;
-  img: string;
+export class MedicoUser {
+  constructor(
+  public _id: any,
+  public nombre: string,
+  public img: string,
+  ){}
 }
 
 export class Medico {
@@ -11,7 +13,7 @@ export class Medico {
     public nombre: string,
     public _id?: any,
     public img?: any,
-    public usuario?: _MedicoUser,
+    public usuario?: MedicoUser,
     public hospital?: Hospital
   ) {}
 }
