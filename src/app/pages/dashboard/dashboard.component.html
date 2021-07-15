@@ -1,1 +1,21 @@
-<p>dashboard works!</p>
+
+
+<div class="row">
+
+    
+<div class="col-lg-3 col-md-6 " *ngFor="let hospital of hospitales">
+    <!-- Card -->
+    <div class="card">
+        <img  class="w150"    [src]="hospital.img | imagen: 'hospitales'" alt={{hospital.nombre}}>
+        <div class="card-body">
+            <h4 class="card-title">{{hospital.nombre}}</h4>
+            <p class="card-text">Nuevo hospital!!!!.</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+    </div>
+    <!-- Card -->
+</div>
+
+
+
+</div>

@@ -1,7 +1,7 @@
 -
 <div class="row animate__animated animate__fadeIn animate__fast">
-  <div class="col-4">
-    <div class="card">
+  <div class="col-4" *ngIf="rol">
+    <div class="card" >
       <div class="card-body">
         <h3>Usuarios</h3>
 
@@ -55,7 +55,8 @@
                 <th>
                   <img [src]="medico.img | imagen: 'medicos'" class="w75" />
                 </th>
-                <th><a [routerLink]="['/dashboard/medico',medico._id]">{{ medico.nombre }}</a></th>
+                <th *ngIf="rol" ><a [routerLink]="['/dashboard/medico',medico._id]">{{ medico.nombre }}</a></th>
+                <th *ngIf="!rol" ><a>{{ medico.nombre }}</a></th>
               </tr>
             </tbody>
           </table>
