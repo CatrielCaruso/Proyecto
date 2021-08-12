@@ -1,18 +1,18 @@
-<div class="row animate__animated animate__fadeIn animate__fast">
+<!-- <div class="row animate__animated animate__fadeIn animate__fast">
   <div class="col-12">
     <div class="card">
       <div class="card-body">
         <input
           type="text"
           class="form-control"
-          placeholder="Buscar hospital..."
+          placeholder="Buscar Carreras..."
           (keyup)="buscar(txtTermino.value)"
           #txtTermino
         />
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div
   class="row animate__animated animate__fadeIn animate__fast"
@@ -36,8 +36,8 @@
 
           <div class="col-8">
 
-            <h4 class="card-title">Hospitales ({{ hospitales.length }})</h4>
-            <h6 class="card-subtitle">Hospitales registrados en mi aplicación</h6>
+            <h4 class="card-title">Carreras ({{ hospitales.length }})</h4>
+            <h6 class="card-subtitle">Carreras registrados en mi aplicación</h6>
 
 
           </div>
@@ -49,7 +49,7 @@
               <button class="btn btn-primary"
               
               (click)="abrirSweetAlert()">
-                <i class="fa fa-hospital-o"></i> Crear hospital
+                <i class="fa fa-hospital-o"></i> Crear una Carrera
               </button>
             </div>
           </div>
@@ -83,7 +83,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Nombre del hospital"
+                    placeholder="Nombre de la carrera"
                     [(ngModel)]="hospital.nombre"
                   />
                 </td>

@@ -53,7 +53,7 @@ export class MedicoService {
 
   }
 
-  crearMedicos(medico:{nombre:string,hospital:string}) {
+  crearMedicos(medico:{nombre:string,hospital:string,covid:boolean}) {
     // http://localhost:3000/api/medicos
 
     const url = `${base_url}/medicos`;

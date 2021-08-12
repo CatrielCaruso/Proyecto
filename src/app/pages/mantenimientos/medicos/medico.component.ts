@@ -35,6 +35,8 @@ export class MedicoComponent implements OnInit {
     this.medicoForm = this.fb.group({
       nombre: ['', Validators.required],
       hospital: ['', Validators.required],
+      covid: [false],
+      dni: ['',Validators.required],
     });
     this.cargarHospitales();
 
@@ -74,12 +76,15 @@ export class MedicoComponent implements OnInit {
       }
 
       const {
+        dni,
+        covid,
         nombre,
         hospital: { _id },
+        
       } = medico;
 
       
-      this.medicoForm.setValue({ nombre, hospital: _id });
+      this.medicoForm.setValue({dni, covid,nombre, hospital: _id });
       return this.medicoSeleccionado = medico;
     });
   }
@@ -116,8 +121,12 @@ export class MedicoComponent implements OnInit {
           // console.log(resp);
 
           Swal.fire('Creado', `${nombre} creado correctamente`, 'success');
-          this.router.navigateByUrl(`/dashboard/medico/${resp.medico._id}`);
+          this.router.navigateByUrl(`/home/corredor/${resp.medico._id}`);
         });
+        console.log(this.medicoForm.value);
+
     }
   }
+
+ 
 }

@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Médico</h4>
+                <h4 class="card-title">Corredor</h4>
                 <h6 class="card-subtitle">Actualizar información</h6>
                 <form class="form-horizontal p-t-20"
                       [formGroup]="medicoForm"
@@ -29,19 +29,33 @@
                                 class="form-control" 
                                 formControlName="nombre"
                                 id="exampleInputuname3" 
-                                placeholder="Nombre del médico">
+                                placeholder="Nombre del corredor">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname3" class="col-sm-3 control-label">Dni</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-id-card"></i></div>
+                                <input type="text" 
+                                class="form-control" 
+                                formControlName="dni"
+                                id="exampleInputuname3" 
+                                placeholder="Dni del corredor">
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputEmail3" class="col-sm-3 control-label">Hospital</label>
+                        <label for="exampleInputEmail3" class="col-sm-3 control-label">Carreras</label>
                         <div class="col-sm-9">
                             <div class="input-group">
                                <select class="form-control"
                                
                                formControlName="hospital">
 
-                                <option value="">Seleccione hospital: </option>
+                                <option value="">Seleccione carrera: </option>
                                 <option *ngFor="let hospital of hospitales"
                                 
                                 [value]="hospital._id">{{hospital.nombre}}</option>
@@ -49,6 +63,41 @@
 
                                </select>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row mb-10">
+                        <label  class="col-sm-3 control-label">Control por Covid</label>
+                        <div class="col-sm-9">
+                        
+
+                             <button
+                             class="btn btn-primary btn-block "
+                            >  <a href="https://cuidarte-aav.com.ar/login/" target="_blank"><p class="text-white waves-effect waves-light">Click para chequear Covid</p></a>
+                        </button>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group row mt-10">
+                        <label for="exampleInputuname3" class="col-sm-3 control-label">Verificación de la app de covid:</label>
+                        <div class="col-sm-9">
+                            <div class="checkbox checkbox-primary pull-left p-t-0">
+                                <input id="checkbox-signup" 
+                                type="checkbox" 
+                                class="filled-in chk-col-light-blue"
+                                formControlName="covid">
+                                <label for="checkbox-signup"> Puede correr </label>
+                            </div>
+
+                            <!-- <div class="checkbox checkbox-primary m-l-10 pull-left p-t-0">
+                                <input id="checkbox-signup2" 
+                                type="checkbox" 
+                                class="filled-in chk-col-light-blue"
+                                formControlName="remember">
+                                <label for="checkbox-signup2"> No </label>
+                            </div> -->
+
+                          
                         </div>
                     </div>
                     
@@ -62,18 +111,34 @@
                                 <i class="fa fa-save"></i> Guardar
                             </button>
                         </div>
+
+                      
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
+    <div class="col">
+    <div class="col">
+        <label  class="col control-label">Control de Covid del corredor:</label>
+        <div class="col-sm-9">
+        
 
-  <div class="col animate__animated animate__fadeIn " *ngIf="hospitalSeleccionado">
+             <button
+             class="btn btn-danger btn-block "
+            >  <a href="https://cuidarte-aav.com.ar/login/" target="_blank"><p class="text-white waves-effect waves-light">Click para chequear Covid</p></a>
+        </button>
+        </div>
+    </div>
+   
+    <hr>
 
-    <div class="card">
+  <div class="col mt-20 animate__animated animate__fadeIn " *ngIf="hospitalSeleccionado">
+
+    <div class="card mt-20">
         <div class="card-body">
-            <h4 class="card-title">Hospital</h4>
+            <h4 class="card-title">Carrera</h4>
             <h6 class="card-subtitle">{{hospitalSeleccionado?.nombre}}</h6>
             <img [src]="hospitalSeleccionado.img | imagen: 'hospitales'"
                                     class="img-thumbnail"/>
@@ -82,7 +147,7 @@
 
   </div>
 
-
-
-
 </div>
+</div>
+
+

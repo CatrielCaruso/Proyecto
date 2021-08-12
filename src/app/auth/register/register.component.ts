@@ -49,7 +49,7 @@ export class RegisterComponent {
         .subscribe((resp:any)=>{
           console.log('Usuario creado');
           console.log(resp);
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/home');
         },(err:any)=>{
           
           // Si sucede un error

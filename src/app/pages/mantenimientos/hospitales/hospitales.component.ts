@@ -64,12 +64,12 @@ export class HospitalesComponent implements OnInit, OnDestroy {
 
   async abrirSweetAlert() {
     const { value = '' } = await Swal.fire<any>({
-      title: 'Crear hospital',
-      text: 'Ingrese el nombre del nuevo hospital',
+      title: 'Crear carrera',
+      text: 'Ingrese el nombre de la nueva carrera',
       input: 'text',
       showCancelButton: true,
       // inputLabel: 'URL address',
-      inputPlaceholder: 'Nombre del hospital',
+      inputPlaceholder: 'Nombre de la carrera',
     });
 
     if (value?.trim().length > 0) {

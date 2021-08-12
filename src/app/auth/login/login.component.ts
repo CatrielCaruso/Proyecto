@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 
           }
           // Mover al dashboard
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/home');
         },(err)=>{
 
           Swal.fire('Error',err.error.msg,'error');
@@ -92,7 +92,7 @@ export class LoginComponent implements OnInit {
                this.ngZone.run(()=>{
 
 
-                this.router.navigateByUrl('/dashboard')
+                this.router.navigateByUrl('/home')
                })
               
               })

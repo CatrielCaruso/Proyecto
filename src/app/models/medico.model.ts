@@ -13,6 +13,8 @@ export class Medico {
     public nombre: string,
     public _id?: any,
     public img?: any,
+    public dni?: string,
+    public covid?:boolean,
     public usuario?: MedicoUser,
     public hospital?: Hospital
   ) {}

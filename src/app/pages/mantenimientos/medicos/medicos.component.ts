@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { delay } from 'rxjs/operators';
 import { Medico } from 'src/app/models/medico.model';
 import { BusquedasService } from 'src/app/services/busquedas.service';
@@ -16,25 +17,24 @@ export class MedicosComponent implements OnInit, OnDestroy {
   public cargando: boolean = true;
   public medicos: Medico[] = [];
   private imgSubs: any;
-  public medicosUsu: any = [];
+
   public role: any = true;
 
   constructor(
     private medicoService: MedicoService,
     private modalImagenService: ModalImagenService,
     private busquedasService: BusquedasService,
-    private usuarioServices: UsuarioService
+    private usuarioServices: UsuarioService,
+  
   ) {}
   ngOnDestroy(): void {
     this.imgSubs.unsubscribe();
   }
 
   ngOnInit(): void {
-    if (this.usuarioServices.role === 'ADMIN_ROLE') {
+    
       this.cargarMedicos();
-    } else {
-      this.cargarMedicosUsu();
-    }
+    
 
     this.imgSubs = this.modalImagenService.nuevaImagen
       .pipe(delay(200))
@@ -57,34 +57,40 @@ export class MedicosComponent implements OnInit, OnDestroy {
 
   // }
 
-  cargarMedicosUsu() {
-    this.cargando = true;
-    this.medicoService.cargarMedicos().subscribe((medicos) => {
-      this.cargando = false;
+  // cargarMedicosUsu() {
+  //   this.cargando = true;
+  //   this.medicoService.cargarMedicos().subscribe((medicos) => {
+  //     this.cargando = false;
 
-      for (let index = 0; index < medicos.length; index++) {
-        const _id = medicos[index].usuario._id;
-        console.log(_id);
-        if (_id === this.usuarioServices.uid) {
-          // this.medicos = medicos[index];
-          this.medicosUsu.push(medicos[index]);
-          console.log(this.medicosUsu);
-        }
-      }
+  //     for (let index = 0; index < medicos.length; index++) {
+       
+  //       const _id = medicos[index].usuario._id;
+  //       console.log(_id);
+  //       if (_id === this.usuarioServices.uid) {
+  //         // this.medicos = medicos[index];
+         
+  //         this.medicosUsu.push(medicos[index]);
+  //         console.log(this.medicosUsu);
+  //       }
+  //     }
+      
 
-      this.role = false;
+  //     this.role = false;
+      
+  //     return this.medicosUsu
+      
+  //     // if(medicos.usuario._id===this.medicos = medicos;){
 
-      console.log(this.medicosUsu);
+  //     //   this.medicos = medicos;
 
-      // if(medicos.usuario._id===this.medicos = medicos;){
+  //     // }
 
-      //   this.medicos = medicos;
+  //     // console.log(medicos);
+  //   });
+  // }
 
-      // }
 
-      // console.log(medicos);
-    });
-  }
+ 
 
   abrirModal(medico: Medico) {
     this.modalImagenService.abrirModal('medicos', medico._id, medico.img);
@@ -104,7 +110,7 @@ export class MedicosComponent implements OnInit, OnDestroy {
 
   borrarMedico(medico: Medico) {
     return Swal.fire({
-      title: '¿Borrar medico?',
+      title: '¿Borrar corredor?',
       text: `Esta a punto de borrar a ${medico.nombre}`,
       icon: 'question',
       showCancelButton: true,
@@ -113,15 +119,24 @@ export class MedicosComponent implements OnInit, OnDestroy {
     }).then((result) => {
       if (result.isConfirmed) {
         this.medicoService.borrarMedico(medico._id).subscribe((resp) => {
-          this.cargarMedicos();
+          // this.cargarMedicos();
 
           Swal.fire(
-            'Medico borrado',
+            'Corredor borrado',
             `${medico.nombre} fue eliminado corectamente`,
             'success'
           );
+
+         
+           
+            this.cargarMedicos();
+
+          
+
+          
         });
       }
+      
     });
   }
 }

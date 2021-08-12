@@ -35,7 +35,7 @@
   <div class="col-4">
     <div class="card">
       <div class="card-body">
-        <h3>Médicos</h3>
+        <h3>Corredores</h3>
 
         <div class="alert alert-info" *ngIf="medicos?.length === 0" class="animate__animated animate__fadeIn animate__fast">
           <p class="mb-0">No hay médicos con ese término</p>
@@ -55,7 +55,7 @@
                 <th>
                   <img [src]="medico.img | imagen: 'medicos'" class="w75" />
                 </th>
-                <th *ngIf="rol" ><a [routerLink]="['/dashboard/medico',medico._id]">{{ medico.nombre }}</a></th>
+                <th *ngIf="rol" ><a [routerLink]="['/home/corredor',medico._id]">{{ medico.nombre }}</a></th>
                 <th *ngIf="!rol" ><a>{{ medico.nombre }}</a></th>
               </tr>
             </tbody>
@@ -67,7 +67,7 @@
   <div class="col-4">
     <div class="card">
       <div class="card-body">
-        <h3>Hospital</h3>
+        <h3>Carrera</h3>
 
         <div class="alert alert-info" *ngIf="hospitales?.length === 0" class="animate__animated animate__fadeIn animate__fast">
           <p class="mb-0">No hay hospitales con ese término</p>

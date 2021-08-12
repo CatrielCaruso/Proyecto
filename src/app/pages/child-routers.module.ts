@@ -17,13 +17,15 @@ import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../guards/admin.guard';
+import { CorredorComponent } from './reporte/corredor/corredor.component';
+import { CarrerasComponent } from './reporte/carreras/carreras.component';
 
 
 const childRoutes:Routes=[
 
 
 
-  { path: '', component: DashboardComponent,data:{titulo:'Dashboard'} },
+  { path: '', component: DashboardComponent,data:{titulo:'home'} },
   { path: 'account-settings', component: AccountSettingComponent,data:{titulo:'Ajuste de cuentas'} },
   { path: 'buscar/:termino', component: BusquedaComponent,data:{titulo:'Busquedas'} },
   { path: 'grafica1', component: Grafica1Component, data:{titulo:'Grafícas #1'}},
@@ -32,15 +34,21 @@ const childRoutes:Routes=[
   { path: 'perfil', component: PerfilComponent,data:{titulo:'Perfil de usuario'} },
   { path: 'rxjs', component: RxjsComponent,data:{titulo:'RXJS'} },
 
-  // Mantenimientos
+  // Mantenimientos 
   
  
-  { path: 'medicos', component: MedicosComponent,data:{titulo:'Mantenimiento de Medicos'} },
-  { path: 'medico/:id', component: MedicoComponent,data:{titulo:'Mantenimiento de Medico'} },
+  { path: 'corredores', component: MedicosComponent,data:{titulo:'Mantenimiento de Corredores'} },
+  { path: 'corredor/:id', component: MedicoComponent,data:{titulo:'Mantenimiento de Corredor'} },
+
+  // Reporte
+
+  { path: 'CorredoresDetalles',canActivate:[AdminGuard], component: CorredorComponent,data:{titulo:'Detalles de corredores'} },
+  { path: 'CarrerasDetalles',canActivate:[AdminGuard], component: CarrerasComponent,data:{titulo:'Detalles de las carreras'} },
+
   
   // Rutas de admin
   { path: 'usuarios',canActivate:[AdminGuard] ,component: UsuariosComponent,data:{titulo:'Mantenimiento de Usuarios'} },
-  { path: 'hospitales',canActivate:[AdminGuard], component: HospitalesComponent,data:{titulo:'Mantenimiento de Hospitales'} },
+  { path: 'carreras',canActivate:[AdminGuard], component: HospitalesComponent,data:{titulo:'Mantenimiento de Carreras'} },
 ]
 
 @NgModule({

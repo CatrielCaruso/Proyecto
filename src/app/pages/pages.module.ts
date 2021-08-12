@@ -23,6 +23,8 @@ import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.comp
 import { PipesModule } from '../pipes/pipes.module';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { CorredorComponent } from './reporte/corredor/corredor.component';
+import { CarrerasComponent } from './reporte/carreras/carreras.component';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     HospitalesComponent,
     MedicoComponent,
     BusquedaComponent,
+    CorredorComponent,
+    CarrerasComponent
   ],
   exports: [
     HeaderComponent,

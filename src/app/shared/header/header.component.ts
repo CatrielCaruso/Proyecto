@@ -37,7 +37,7 @@ export class HeaderComponent  {
     }
     
     // console.log(termino);
-    this.router.navigateByUrl(`/dashboard/buscar/${termino}`);
+    this.router.navigateByUrl(`/home/buscar/${termino}`);
     
   }
 
